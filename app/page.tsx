@@ -4,7 +4,7 @@ export default async function Home() {
   const data = await getData()
 
   return (
-    <div className='p-4 flex flex-col gap-2'>
+    <div className='p-4 flex flex-col gap-2 antialiased'>
       <h1 className='text-4xl'>NextJS 13 - PokeAPI App</h1>
 
       {/* PokeAPI */}
