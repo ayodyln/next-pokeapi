@@ -1,4 +1,4 @@
-const PokeClient = ({ hover, poke, favorite, favHandler, getFavs }: any) => {
+const PokeClient = ({ hover, poke, favorite, favHandler }: any) => {
   return (
     <div
       className={
@@ -27,11 +27,11 @@ const PokeClient = ({ hover, poke, favorite, favHandler, getFavs }: any) => {
         </button>
       </section>
 
-      <div className='divider before:bg-primary after:bg-primary m-0'></div>
+      <div className='divider before:bg-neutral after:bg-neutral m-0'></div>
 
-      <section className='flex justify-between'>
-        <div className=''>Weight: {poke.weight / 10} kg</div>
-        <div className=''>Height: {poke.height / 10} m</div>
+      <section className='flex justify-between font-bold'>
+        <span>Weight: {poke.weight / 10} kg</span>
+        <span>Height: {poke.height / 10} m</span>
       </section>
 
       <section className='flex flex-wrap gap-[6px] mt-3'>
@@ -60,7 +60,7 @@ const PokeClient = ({ hover, poke, favorite, favHandler, getFavs }: any) => {
           }
           return (
             <div className={`badge border-none ${statType} p-[8px]`} key={i}>
-              {stat.stat.name} {stat.base_stat}
+              {stat.stat.name}: {stat.base_stat}
             </div>
           )
         })}

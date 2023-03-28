@@ -4,13 +4,10 @@
 import { useEffect, useState } from "react"
 import PokeClient from "./PokeClient"
 
-const Pokemon = ({ poke, favorites }: any) => {
+const Pokemon = ({ poke }: any) => {
   const [hover, setHover] = useState(false)
   const [favorite, setFavorite] = useState(false)
-  const hoverHandler = () => {
-    console.log(poke.stats)
-    setHover(!hover)
-  }
+  const hoverHandler = () => setHover(!hover)
 
   const favHandler = async () => {
     try {
