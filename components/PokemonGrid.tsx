@@ -36,8 +36,8 @@ const PokemonGrid = ({ clientPokedex }: any) => {
   useEffect(() => {
     pokedex(clientPokedex).then((data) => setDex(data))
     getFavs().then((f) => setFavorites(f))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    console.log(favs)
+  }, [clientPokedex, favs])
 
   return (
     <section className='h-full flex flex-col gap-4 overflow-hidden'>
