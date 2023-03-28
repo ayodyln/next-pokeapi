@@ -42,11 +42,27 @@ const PokemonGrid = ({ clientPokedex }: any) => {
               : false
 
             if (types.includes(filter)) {
-              return <Pokemon key={i} poke={poke} isFavorite={isFavorite} />
+              return (
+                <Pokemon
+                  key={i}
+                  poke={poke}
+                  isFavorite={isFavorite}
+                  favs={favs}
+                  setFavorites={setFavorites}
+                />
+              )
             }
 
             if (!filter) {
-              return <Pokemon key={i} poke={poke} isFavorite={isFavorite} />
+              return (
+                <Pokemon
+                  key={i}
+                  poke={poke}
+                  isFavorite={isFavorite}
+                  favs={favs}
+                  setFavorites={setFavorites}
+                />
+              )
             }
           })}
       </div>
