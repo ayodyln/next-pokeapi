@@ -8,7 +8,7 @@ export default async function Home() {
   return (
     <div className='p-4 flex flex-col gap-2 antialiased h-screen w-screen'>
       <h1 className='text-4xl'>NextJS 13 - PokeAPI App</h1>
-      {/* <PokemonGrid clientPokedex={clientPokedex} /> */}
+      <PokemonGrid clientPokedex={dex} />
     </div>
   )
 }
