@@ -22,4 +22,3 @@ const getData = async () => {
 
   return results
 }
-

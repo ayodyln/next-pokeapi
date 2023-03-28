@@ -4,9 +4,9 @@
 import { useEffect, useState } from "react"
 import PokeClient from "./PokeClient"
 
-const Pokemon = ({ poke }: any) => {
+const Pokemon = ({ poke, isFavorite }: any) => {
   const [hover, setHover] = useState(false)
-  const [favorite, setFavorite] = useState(false)
+  const [favorite, setFavorite] = useState(isFavorite)
   const hoverHandler = () => setHover(!hover)
 
   const favHandler = async () => {
@@ -34,24 +34,6 @@ const Pokemon = ({ poke }: any) => {
       console.log(error)
     }
   }
-
-  const getFavs = async () => {
-    try {
-      const data = await fetch("api/pokemon")
-      const { favorites } = await data.json()
-      const foundFav = favorites.filter((fav: any) => fav.name === poke.name)
-      if (foundFav.length !== 0) return true
-      else return false
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  useEffect(() => {
-    getFavs().then((f) => {
-      if (f) setFavorite(true)
-    })
-  }, [])
 
   return (
     <div
