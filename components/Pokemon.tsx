@@ -1,12 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import PokeClient from "./PokeClient"
 
 const Pokemon = ({ poke, isFavorite }: any) => {
   const [hover, setHover] = useState(false)
-  const [favorite, setFavorite] = useState(false)
+  const [favorite, setFavorite] = useState(isFavorite)
   const hoverHandler = () => setHover(!hover)
 
   const favHandler = async () => {
@@ -28,7 +28,6 @@ const Pokemon = ({ poke, isFavorite }: any) => {
           body: JSON.stringify({ name: poke.name, id: poke.id }),
         })
       }
-
       setFavorite(!favorite)
     } catch (error) {
       console.log(error)

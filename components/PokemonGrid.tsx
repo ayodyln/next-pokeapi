@@ -49,10 +49,9 @@ const PokemonGrid = ({ clientPokedex }: any) => {
         {filter !== "N/A" &&
           dex.map((poke: any, i: number) => {
             const types = poke.types.map((t: any) => t.type.name)
-            const isFavorite =
-              favs.filter((fav: any) => fav.name === poke.name).length !== 0
-                ? true
-                : false
+            const isFavorite = favs.find((fav: any) => fav.name === poke.name)
+              ? true
+              : false
 
             if (types.includes(filter)) {
               return <Pokemon key={i} poke={poke} isFavorite={isFavorite} />
