@@ -10,7 +10,6 @@ export default async function Home() {
     <div className='p-4 flex flex-col gap-2 antialiased h-screen w-screen'>
       <h1 className='text-4xl'>NextJS 13 - PokeAPI App</h1>
 
-      {/* PokeAPI */}
       <PokemonGrid clientPokedex={clientPokedex} types={types} />
     </div>
   )
@@ -30,7 +29,6 @@ const getData = async () => {
 
   const pokedex = await results.map(async (poke: { name: any }) => {
     const myPoke = await fetch(`https://pokeapi.co/api/v2/pokemon/${poke.name}`)
-    if (!myPoke) throw new Error("Failed to Fetch Pokemon")
     const res = await myPoke.json()
     return res
   })
