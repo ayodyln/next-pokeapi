@@ -2,15 +2,14 @@ import PokemonGrid from "@/components/PokemonGrid"
 
 export default async function Home() {
   const data = await getData()
-  const { pokedex } = data
 
-  let clientPokedex: any = pokedex
+  let clientPokedex: any = data
 
   return (
     <div className='p-4 flex flex-col gap-2 antialiased h-screen w-screen'>
       <h1 className='text-4xl'>NextJS 13 - PokeAPI App</h1>
 
-      <PokemonGrid clientPokedex={clientPokedex}  />
+      <PokemonGrid clientPokedex={clientPokedex} />
     </div>
   )
 }
@@ -30,7 +29,5 @@ const getData = async () => {
     return res
   })
 
-  return {
-    pokedex: await Promise.all(pokedex),
-  }
+  return Promise.all(pokedex)
 }
