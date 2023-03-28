@@ -6,7 +6,7 @@ import PokeClient from "./PokeClient"
 
 const Pokemon = ({ poke, isFavorite }: any) => {
   const [hover, setHover] = useState(false)
-  const [favorite, setFavorite] = useState(isFavorite)
+  const [favorite, setFavorite] = useState(false)
   const hoverHandler = () => setHover(!hover)
 
   const favHandler = async () => {
