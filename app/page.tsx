@@ -24,7 +24,7 @@ const getData = async () => {
   // const pokeTypes = await fetch(`https://pokeapi.co/api/v2/type`)
   // const pokeType_Response = await pokeTypes.json()
 
-  if (!pokeAPI.ok || !pokeTypes.ok) {
+  if (!pokeAPI.ok) {
     throw new Error("Failed to fetch data")
   }
 
