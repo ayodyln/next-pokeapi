@@ -2,7 +2,7 @@ import PokemonGrid from "@/components/PokemonGrid"
 
 export default async function Home() {
   const data = await getData()
-  const { pokedex, types } = JSON.parse(data)
+  const { pokedex, types } = data
 
   let clientPokedex: any = pokedex
 
@@ -33,8 +33,8 @@ const getData = async () => {
     return res
   })
 
-  return JSON.stringify({
+  return {
     pokedex: await Promise.all(pokedex),
     types: pokeType_Response,
-  })
+  }
 }
