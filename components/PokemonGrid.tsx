@@ -37,7 +37,7 @@ const PokemonGrid = ({ clientPokedex }: any) => {
     pokedex(clientPokedex).then((data) => setDex(data))
     getFavs().then((f) => setFavorites(f))
     console.log(favs)
-  }, [clientPokedex, favs])
+  }, [])
 
   return (
     <section className='h-full flex flex-col gap-4 overflow-hidden'>
