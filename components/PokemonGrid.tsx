@@ -25,7 +25,7 @@ const PokemonGrid = ({ clientPokedex }: any) => {
 
   const getFavs = async () => {
     try {
-      const data = await fetch("api/pokemon", { next: { revalidate: 10 } })
+      const data = await fetch("api/favorites")
       const { favorites } = await data.json()
       return favorites
     } catch (error) {
@@ -51,16 +51,16 @@ const PokemonGrid = ({ clientPokedex }: any) => {
         {filter !== "N/A" &&
           dex.map((poke: any, i: number) => {
             const types = poke.types.map((t: any) => t.type.name)
-            const isFavorite = favs.find((fav: any) => fav.name === poke.name)
-              ? true
-              : false
+            // const isFavorite = favs.find((fav: any) => fav.name === poke.name)
+            //   ? true
+            //   : false
 
             if (types.includes(filter)) {
               return (
                 <Pokemon
                   key={i}
                   poke={poke}
-                  isFavorite={isFavorite}
+                  isFavorite={false}
                   updateFavs={updateFavs}
                 />
               )
@@ -71,7 +71,7 @@ const PokemonGrid = ({ clientPokedex }: any) => {
                 <Pokemon
                   key={i}
                   poke={poke}
-                  isFavorite={isFavorite}
+                  isFavorite={false}
                   updateFavs={updateFavs}
                 />
               )
