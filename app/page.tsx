@@ -9,9 +9,9 @@ export default async function Home() {
 
       {/* PokeAPI */}
       <section className='grid grid-cols-4 gap-2'>
-        {data.map((poke: object, i) => {
-          return <Pokemon poke={poke} key={i} />
-        })}
+        {data.map((poke: object, i: number) => (
+          <Pokemon poke={poke} key={i} />
+        ))}
       </section>
     </div>
   )
