@@ -36,6 +36,7 @@ const Pokemon = ({ poke }: any) => {
   }
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
+
   // const getFavs = async () => {
   //   try {
   //     const data = await fetch("api/pokemon")
