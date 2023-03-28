@@ -23,27 +23,13 @@ const PokemonGrid = ({ clientPokedex }: any) => {
     return Promise.all(pokedex)
   }
 
-  const getFavs = async () => {
-    try {
-      const data = await fetch("api/favorites")
-      const { favorites } = await data.json()
-      return favorites
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  const updateFavs = () => getFavs().then((f) => setFavorites(f))
-
   useEffect(() => {
     pokedex(clientPokedex).then((data) => setDex(data))
-    getFavs().then((f) => setFavorites(f))
-    console.log(favs)
   }, [])
 
   return (
-    <section className='h-full flex flex-col gap-4 overflow-hidden'>
-      <section className='flex justify-end h-fit'>
+    <section className='h-full flex flex-col gap-1 overflow-hidden'>
+      <section className='flex justify-end h-fit p-2'>
         <Filter clientPokedex={clientPokedex} setFilter={setFilter} />
       </section>
 
@@ -51,30 +37,16 @@ const PokemonGrid = ({ clientPokedex }: any) => {
         {filter !== "N/A" &&
           dex.map((poke: any, i: number) => {
             const types = poke.types.map((t: any) => t.type.name)
-            // const isFavorite = favs.find((fav: any) => fav.name === poke.name)
-            //   ? true
-            //   : false
+            const isFavorite = favs.find((fav: any) => fav.name === poke.name)
+              ? true
+              : false
 
             if (types.includes(filter)) {
-              return (
-                <Pokemon
-                  key={i}
-                  poke={poke}
-                  isFavorite={false}
-                  updateFavs={updateFavs}
-                />
-              )
+              return <Pokemon key={i} poke={poke} isFavorite={isFavorite} />
             }
 
             if (!filter) {
-              return (
-                <Pokemon
-                  key={i}
-                  poke={poke}
-                  isFavorite={false}
-                  updateFavs={updateFavs}
-                />
-              )
+              return <Pokemon key={i} poke={poke} isFavorite={isFavorite} />
             }
           })}
       </div>

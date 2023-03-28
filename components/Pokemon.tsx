@@ -4,36 +4,17 @@
 import { useState } from "react"
 import PokeClient from "./PokeClient"
 
-const Pokemon = ({ poke, isFavorite, updateFavs }: any) => {
+const Pokemon = ({ poke, isFavorite }: any) => {
   const [hover, setHover] = useState(false)
   const [favorite, setFavorite] = useState(isFavorite)
   const hoverHandler = () => setHover(!hover)
 
   const favHandler = async () => {
     try {
-      if (favorite) {
-        await fetch("api/pokemon", {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ name: poke.name, id: poke.id }),
-        })
-      } else if (!favorite) {
-        await fetch("api/pokemon", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ name: poke.name, id: poke.id }),
-        })
-      }
       setFavorite(!favorite)
     } catch (error) {
       console.log(error)
     }
-
-    updateFavs()
   }
 
   return (

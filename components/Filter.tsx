@@ -6,7 +6,6 @@ const Filter = ({ setFilter }: any) => {
   const [type, setType]: any = useState("")
   const filterHandler = () => setFilter(type.toLowerCase())
   const types = [
-    "all",
     "normal",
     "fighting",
     "flying",
