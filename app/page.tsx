@@ -2,13 +2,11 @@ import PokemonGrid from "@/components/PokemonGrid"
 
 export default async function Home() {
   const data = await getData()
-  const dex = await pokedex(data)
-  console.log(dex)
 
   return (
     <div className='p-4 flex flex-col gap-2 antialiased h-screen w-screen'>
       <h1 className='text-4xl'>NextJS 13 - PokeAPI App</h1>
-      <PokemonGrid clientPokedex={dex} />
+      <PokemonGrid clientPokedex={data} />
     </div>
   )
 }
@@ -25,12 +23,3 @@ const getData = async () => {
   return results
 }
 
-const pokedex = async (data: any) => {
-  const pokedex = data.map(async (poke: { name: any }) => {
-    const myPoke = await fetch(`https://pokeapi.co/api/v2/pokemon/${poke.name}`)
-    const res = await myPoke.json()
-    return res
-  })
-
-  return Promise.all(pokedex)
-}
