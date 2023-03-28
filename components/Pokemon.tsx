@@ -35,25 +35,23 @@ const Pokemon = ({ poke }: any) => {
     }
   }
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const getFavs = async () => {
+    try {
+      const data = await fetch("api/pokemon")
+      const { favorites } = await data.json()
+      const foundFav = favorites.filter((fav: any) => fav.name === poke.name)
+      if (foundFav.length !== 0) return true
+      else return false
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
-  // const getFavs = async () => {
-  //   try {
-  //     const data = await fetch("api/pokemon")
-  //     const { favorites } = await data.json()
-  //     const foundFav = favorites.filter((fav: any) => fav.name === poke.name)
-  //     if (foundFav.length !== 0) return true
-  //     else return false
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   getFavs().then((f) => {
-  //     if (f) setFavorite(true)
-  //   })
-  // }, [getFavs])
+  useEffect(() => {
+    getFavs().then((f) => {
+      if (f) setFavorite(true)
+    })
+  }, [])
 
   return (
     <div
