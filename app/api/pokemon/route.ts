@@ -10,6 +10,9 @@ export async function POST(request: Request) {
   return NextResponse.json({ favorites })
 }
 
-export async function PUT(request: Request) {}
-
-export async function DELETE(request: Request) {}
+export const DELETE = async (request: Request) => {
+  const body = await request.json()
+  return NextResponse.json({
+    favorites: favorites.filter((fav: any) => body.name !== fav.name),
+  })
+}
