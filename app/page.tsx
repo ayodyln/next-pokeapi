@@ -2,8 +2,9 @@ import PokemonGrid from "@/components/PokemonGrid"
 
 export default async function Home() {
   const data = await getData()
-  const { pokedex, types } = data
+  const { pokedex } = data
 
+  let types: any = []
   let clientPokedex: any = pokedex
 
   return (
@@ -20,8 +21,8 @@ const getData = async () => {
   const pokeAPI_Response = await pokeAPI.json()
   const results = pokeAPI_Response.results
 
-  const pokeTypes = await fetch(`https://pokeapi.co/api/v2/type`)
-  const pokeType_Response = await pokeTypes.json()
+  // const pokeTypes = await fetch(`https://pokeapi.co/api/v2/type`)
+  // const pokeType_Response = await pokeTypes.json()
 
   if (!pokeAPI.ok || !pokeTypes.ok) {
     throw new Error("Failed to fetch data")
@@ -35,6 +36,6 @@ const getData = async () => {
 
   return {
     pokedex: await Promise.all(pokedex),
-    types: pokeType_Response,
+    // types: pokeType_Response,
   }
 }
