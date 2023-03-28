@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 
-const Filter = ({ types, clientPokedex, setFilter }: any) => {
+const Filter = ({ types, setFilter }: any) => {
   const [type, setType]: any = useState("")
   const filterHandler = () => setFilter(type.toLowerCase())
 
