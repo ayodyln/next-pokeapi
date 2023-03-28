@@ -2,9 +2,32 @@
 
 import { useState } from "react"
 
-const Filter = ({ types, setFilter }: any) => {
+const Filter = ({ setFilter }: any) => {
   const [type, setType]: any = useState("")
   const filterHandler = () => setFilter(type.toLowerCase())
+  const types = [
+    "all",
+    "normal",
+    "fighting",
+    "flying",
+    "Poison",
+    "ground",
+    "rock",
+    "bug",
+    "ghost",
+    "steel",
+    "fire",
+    "water",
+    "grass",
+    "electric",
+    "psychic",
+    "ice",
+    "dragon",
+    "dark",
+    "fairy",
+    "unknown",
+    "shadow",
+  ]
 
   return (
     <div className='form-control'>
@@ -16,7 +39,7 @@ const Filter = ({ types, setFilter }: any) => {
           <option value={""}>All</option>
           {types.map((type: any, i: number) => (
             <option key={i}>
-              {type.name.charAt(0).toUpperCase() + type.name.slice(1)}
+              {type.charAt(0).toUpperCase() + type.slice(1)}
             </option>
           ))}
         </select>
