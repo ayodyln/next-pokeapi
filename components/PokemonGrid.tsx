@@ -33,6 +33,8 @@ const PokemonGrid = ({ clientPokedex }: any) => {
     }
   }
 
+  const updateFavs = () => getFavs().then((f) => setFavorites(f))
+
   useEffect(() => {
     pokedex(clientPokedex).then((data) => setDex(data))
     getFavs().then((f) => setFavorites(f))
@@ -54,11 +56,25 @@ const PokemonGrid = ({ clientPokedex }: any) => {
               : false
 
             if (types.includes(filter)) {
-              return <Pokemon key={i} poke={poke} isFavorite={isFavorite} />
+              return (
+                <Pokemon
+                  key={i}
+                  poke={poke}
+                  isFavorite={isFavorite}
+                  updateFavs={updateFavs}
+                />
+              )
             }
 
             if (!filter) {
-              return <Pokemon key={i} poke={poke} isFavorite={isFavorite} />
+              return (
+                <Pokemon
+                  key={i}
+                  poke={poke}
+                  isFavorite={isFavorite}
+                  updateFavs={updateFavs}
+                />
+              )
             }
           })}
       </div>

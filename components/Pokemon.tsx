@@ -4,7 +4,7 @@
 import { useState } from "react"
 import PokeClient from "./PokeClient"
 
-const Pokemon = ({ poke, isFavorite }: any) => {
+const Pokemon = ({ poke, isFavorite, updateFavs }: any) => {
   const [hover, setHover] = useState(false)
   const [favorite, setFavorite] = useState(isFavorite)
   const hoverHandler = () => setHover(!hover)
@@ -32,6 +32,8 @@ const Pokemon = ({ poke, isFavorite }: any) => {
     } catch (error) {
       console.log(error)
     }
+
+    updateFavs()
   }
 
   return (
